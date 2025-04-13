@@ -22,14 +22,13 @@ def erase(event):
     eraser_x = event.x
     eraser_y = event.y
 
-    # eraser ki size
     eraser_size = 40
+
     x1 = eraser_x - eraser_size // 2
     y1 = eraser_y - eraser_size // 2
     x2 = eraser_x + eraser_size // 2
     y2 = eraser_y + eraser_size // 2
 
-    # check which rectangles overlap
     overlapping = canvas.find_overlapping(x1, y1, x2, y2)
     for item in overlapping:
         canvas.itemconfig(item, fill="white")
@@ -42,7 +41,6 @@ canvas.pack()
 
 cells = create_cells(canvas)
 
-# bind mouse drag to erase function
 canvas.bind("<B1-Motion>", erase)
 
 root.mainloop()
